@@ -20,3 +20,16 @@ My implementation of the classic Pacman game, built in C++ with raylib for rende
 `insert gameplay here`
 
 # 📊🧐 Kanban Project Management Methology 
+
+
+## TODO
+
+- [ ] Basic Player Input
+- [ ] Level Setup
+- [ ] Player Collisions
+- [ ] Basic Enemy
+- [ ] Enemy AI
+- [ ] Pellets
+- [ ] Big Pellets
+- [ ] Special Item
+- [ ] Game Logic
