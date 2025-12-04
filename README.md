@@ -17,3 +17,5 @@ My implementation of the classic Pacman game, built in C++ with raylib for rende
 # Gameplay
 
 `insert gameplay here`
+
+# Kanban Project Managment methology 📊🧐
