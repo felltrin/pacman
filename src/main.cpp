@@ -4,15 +4,29 @@
 //! Call this for the main game loop to initialize the game
 int main(int, char **)
 {
-    InitWindow(600, 800, "PacMan");
+    InitWindow(500, 620, "PacMan");
+
+    Vector2 ballPosition = {(float)500 / 2, (float)620 / 2};
+
     SetTargetFPS(60);
 
     while (!WindowShouldClose())
     {
-        BeginDrawing();
-        ClearBackground(RAYWHITE);
+        if (IsKeyDown(KEY_RIGHT))
+            ballPosition.x += 2.0f;
+        if (IsKeyDown(KEY_LEFT))
+            ballPosition.x -= 2.0f;
+        if (IsKeyDown(KEY_UP))
+            ballPosition.y -= 2.0f;
+        if (IsKeyDown(KEY_DOWN))
+            ballPosition.y += 2.0f;
 
-        DrawText("Hello, from raylib", 10, 10, 20, BLACK);
+        BeginDrawing();
+        ClearBackground(BLACK);
+
+        DrawText("Hello, from raylib", 10, 10, 20, RAYWHITE);
+
+        DrawCircleV(ballPosition, 50, YELLOW);
 
         DrawFPS(10, 40);
         EndDrawing();
