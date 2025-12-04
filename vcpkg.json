@@ -1,0 +1,9 @@
+{
+    "name": "letthisbefinal",
+    "description": "LetThisBeFinal",
+    "license": "MIT",
+    "dependencies": [
+        "raylib",
+        "catch2"
+    ]
+}
