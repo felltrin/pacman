@@ -3,6 +3,7 @@
 My implementation of the classic Pacman game, built in C++ with raylib for rendering and CMake for build automation
 
 # Project Features
+
 - 🎮 W,A,S,D - controls
 - 🔰 3 levels with different layout + Level cutomization (incoming feature)
 - 🟢 Rendering, UI, visuals with Raylib 
@@ -18,4 +19,4 @@ My implementation of the classic Pacman game, built in C++ with raylib for rende
 
 `insert gameplay here`
 
-# Kanban Project Managment methology 📊🧐
+# 📊🧐 Kanban Project Management Methology 
