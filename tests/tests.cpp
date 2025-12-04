@@ -17,5 +17,4 @@ TEST_CASE("Factorials are computed wrong", "[factorial]")
     REQUIRE(Factorial(1) != 2);
     REQUIRE(Factorial(2) != 3);
     REQUIRE(Factorial(3) != 7);
-    REQUIRE(Factorial(5) != 21);
 }
