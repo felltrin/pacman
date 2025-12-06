@@ -1,11 +1,8 @@
+#include "constants.h"
+#include "maze.h"
 #include <iostream>
 #include <raylib.h>
-#include "maze.h"
-#include "constants.h"
 
-//!
-//! Call this for the main game loop to initialize the game
-//!
 int main(int, char **)
 {
     InitWindow(screenWidth, screenHeight, "PacMan");
@@ -37,13 +34,10 @@ int main(int, char **)
         BeginDrawing();
         ClearBackground(BLACK);
         maze.Draw();
-
-        // DrawText("Hello, from raylib", 10, 10, 20, RAYWHITE);
         //!
         //! Drawing the player
         //!
         // DrawCircleV(ballPosition, 50, YELLOW);
-        // DrawFPS(10, 40);
         EndDrawing();
     }
 
