@@ -174,6 +174,32 @@ void Maze::Draw()
                     BLUE);
                 break;
             }
+            case 7:
+            {
+                // Calculate center and radii from the rectangle
+                rect = {
+                    (float)((j * numberTwo + (numberTwo * 0.5))),
+                    (float)(i * numberOne - (0.4f * numberOne)),
+                    (float)numberTwo,
+                    (float)numberOne};
+
+                center = {rect.x + rect.width / 2, rect.y + rect.height / 2};
+                radiusX = rect.width / 2.0f;
+                radiusY = rect.height / 2.0f;
+
+                startAngleDeg = (PI / 2.0f) * RAD2DEG;
+                endAngleDeg = (PI)*RAD2DEG;
+
+                DrawRing(
+                    {center.x, center.y},
+                    5,
+                    10,
+                    startAngleDeg,
+                    endAngleDeg,
+                    600, // segments (increase for smoother arc)
+                    BLUE);
+                break;
+            }
             default:
             {
                 std::cout << "lol!" << std::endl;
