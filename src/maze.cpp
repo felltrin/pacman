@@ -1,6 +1,6 @@
 #include "maze.h"
-#include "levels.h"
 #include "constants.h"
+#include "levels.h"
 
 Maze::Maze()
 {
@@ -11,40 +11,39 @@ Maze::Maze()
 
 void Maze::Initialize()
 {
-    int board[33][30] = {
-        {6, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5},
-        {3, 6, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 6, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 3},
-        {3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3},
-        {3, 3, 1, 6, 4, 4, 5, 1, 6, 4, 4, 4, 5, 1, 3, 3, 1, 6, 4, 4, 4, 5, 1, 6, 4, 4, 5, 1, 3, 3},
-        {3, 3, 2, 3, 0, 0, 3, 1, 3, 0, 0, 0, 3, 1, 3, 3, 1, 3, 0, 0, 0, 3, 1, 3, 0, 0, 3, 2, 3, 3},
-        {3, 3, 1, 7, 4, 4, 8, 1, 7, 4, 4, 4, 8, 1, 7, 8, 1, 7, 4, 4, 4, 8, 1, 7, 4, 4, 8, 1, 3, 3},
-        {3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3},
-        {3, 3, 1, 6, 4, 4, 5, 1, 6, 5, 1, 6, 4, 4, 4, 4, 4, 4, 5, 1, 6, 5, 1, 6, 4, 4, 5, 1, 3, 3},
-        {3, 3, 1, 7, 4, 4, 8, 1, 3, 3, 1, 7, 4, 4, 5, 6, 4, 4, 8, 1, 3, 3, 1, 7, 4, 4, 8, 1, 3, 3},
-        {3, 3, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 1, 3, 3},
-        {3, 7, 4, 4, 4, 4, 5, 1, 3, 7, 4, 4, 5, 0, 3, 3, 0, 6, 4, 4, 8, 3, 1, 6, 4, 4, 4, 4, 8, 3},
-        {3, 0, 0, 0, 0, 0, 3, 1, 3, 6, 4, 4, 8, 0, 7, 8, 0, 7, 4, 4, 5, 3, 1, 3, 0, 0, 0, 0, 0, 3},
-        {3, 0, 0, 0, 0, 0, 3, 1, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 1, 3, 0, 0, 0, 0, 0, 3},
-        {8, 0, 0, 0, 0, 0, 3, 1, 3, 3, 0, 6, 4, 4, 9, 9, 4, 4, 5, 0, 3, 3, 1, 3, 0, 0, 0, 0, 0, 7},
-        {4, 4, 4, 4, 4, 4, 8, 1, 7, 8, 0, 3, 0, 0, 0, 0, 0, 0, 3, 0, 7, 8, 1, 7, 4, 4, 4, 4, 4, 4},
-        {0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
-        {4, 4, 4, 4, 4, 4, 5, 1, 6, 5, 0, 3, 0, 0, 0, 0, 0, 0, 3, 0, 6, 5, 1, 6, 4, 4, 4, 4, 4, 4},
-        {5, 0, 0, 0, 0, 0, 3, 1, 3, 3, 0, 7, 4, 4, 4, 4, 4, 4, 8, 0, 3, 3, 1, 3, 0, 0, 0, 0, 0, 6},
-        {3, 0, 0, 0, 0, 0, 3, 1, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 1, 3, 0, 0, 0, 0, 0, 3},
-        {3, 0, 0, 0, 0, 0, 3, 1, 3, 3, 0, 6, 4, 4, 4, 4, 4, 4, 5, 0, 3, 3, 1, 3, 0, 0, 0, 0, 0, 3},
-        {3, 6, 4, 4, 4, 4, 8, 1, 7, 8, 0, 7, 4, 4, 5, 6, 4, 4, 8, 0, 7, 8, 1, 7, 4, 4, 4, 4, 5, 3},
-        {3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3},
-        {3, 3, 1, 6, 4, 4, 5, 1, 6, 4, 4, 4, 5, 1, 3, 3, 1, 6, 4, 4, 4, 5, 1, 6, 4, 4, 5, 1, 3, 3},
-        {3, 3, 1, 7, 4, 5, 3, 1, 7, 4, 4, 4, 8, 1, 7, 8, 1, 7, 4, 4, 4, 8, 1, 3, 6, 4, 8, 1, 3, 3},
-        {3, 3, 2, 1, 1, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 2, 3, 3},
-        {3, 7, 4, 5, 1, 3, 3, 1, 6, 5, 1, 6, 4, 4, 4, 4, 4, 4, 5, 1, 6, 5, 1, 3, 3, 1, 6, 4, 8, 3},
-        {3, 6, 4, 8, 1, 7, 8, 1, 3, 3, 1, 7, 4, 4, 5, 6, 4, 4, 8, 1, 3, 3, 1, 7, 8, 1, 7, 4, 5, 3},
-        {3, 3, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 1, 3, 3},
-        {3, 3, 1, 6, 4, 4, 4, 4, 8, 7, 4, 4, 5, 1, 3, 3, 1, 6, 4, 4, 8, 7, 4, 4, 4, 4, 5, 1, 3, 3},
-        {3, 3, 1, 7, 4, 4, 4, 4, 4, 4, 4, 4, 8, 1, 7, 8, 1, 7, 4, 4, 4, 4, 4, 4, 4, 4, 8, 1, 3, 3},
-        {3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3},
-        {3, 7, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 8, 3},
-        {7, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 8}};
+    int board[33][30] = {{6, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5},
+                         {3, 6, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 6, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 3},
+                         {3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3},
+                         {3, 3, 1, 6, 4, 4, 5, 1, 6, 4, 4, 4, 5, 1, 3, 3, 1, 6, 4, 4, 4, 5, 1, 6, 4, 4, 5, 1, 3, 3},
+                         {3, 3, 2, 3, 0, 0, 3, 1, 3, 0, 0, 0, 3, 1, 3, 3, 1, 3, 0, 0, 0, 3, 1, 3, 0, 0, 3, 2, 3, 3},
+                         {3, 3, 1, 7, 4, 4, 8, 1, 7, 4, 4, 4, 8, 1, 7, 8, 1, 7, 4, 4, 4, 8, 1, 7, 4, 4, 8, 1, 3, 3},
+                         {3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3},
+                         {3, 3, 1, 6, 4, 4, 5, 1, 6, 5, 1, 6, 4, 4, 4, 4, 4, 4, 5, 1, 6, 5, 1, 6, 4, 4, 5, 1, 3, 3},
+                         {3, 3, 1, 7, 4, 4, 8, 1, 3, 3, 1, 7, 4, 4, 5, 6, 4, 4, 8, 1, 3, 3, 1, 7, 4, 4, 8, 1, 3, 3},
+                         {3, 3, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 1, 3, 3},
+                         {3, 7, 4, 4, 4, 4, 5, 1, 3, 7, 4, 4, 5, 0, 3, 3, 0, 6, 4, 4, 8, 3, 1, 6, 4, 4, 4, 4, 8, 3},
+                         {3, 0, 0, 0, 0, 0, 3, 1, 3, 6, 4, 4, 8, 0, 7, 8, 0, 7, 4, 4, 5, 3, 1, 3, 0, 0, 0, 0, 0, 3},
+                         {3, 0, 0, 0, 0, 0, 3, 1, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 1, 3, 0, 0, 0, 0, 0, 3},
+                         {8, 0, 0, 0, 0, 0, 3, 1, 3, 3, 0, 6, 4, 4, 9, 9, 4, 4, 5, 0, 3, 3, 1, 3, 0, 0, 0, 0, 0, 7},
+                         {4, 4, 4, 4, 4, 4, 8, 1, 7, 8, 0, 3, 0, 0, 0, 0, 0, 0, 3, 0, 7, 8, 1, 7, 4, 4, 4, 4, 4, 4},
+                         {0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 3, 0, 0, 0, 0, 0, 0, 3, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0},
+                         {4, 4, 4, 4, 4, 4, 5, 1, 6, 5, 0, 3, 0, 0, 0, 0, 0, 0, 3, 0, 6, 5, 1, 6, 4, 4, 4, 4, 4, 4},
+                         {5, 0, 0, 0, 0, 0, 3, 1, 3, 3, 0, 7, 4, 4, 4, 4, 4, 4, 8, 0, 3, 3, 1, 3, 0, 0, 0, 0, 0, 6},
+                         {3, 0, 0, 0, 0, 0, 3, 1, 3, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 3, 1, 3, 0, 0, 0, 0, 0, 3},
+                         {3, 0, 0, 0, 0, 0, 3, 1, 3, 3, 0, 6, 4, 4, 4, 4, 4, 4, 5, 0, 3, 3, 1, 3, 0, 0, 0, 0, 0, 3},
+                         {3, 6, 4, 4, 4, 4, 8, 1, 7, 8, 0, 7, 4, 4, 5, 6, 4, 4, 8, 0, 7, 8, 1, 7, 4, 4, 4, 4, 5, 3},
+                         {3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3},
+                         {3, 3, 1, 6, 4, 4, 5, 1, 6, 4, 4, 4, 5, 1, 3, 3, 1, 6, 4, 4, 4, 5, 1, 6, 4, 4, 5, 1, 3, 3},
+                         {3, 3, 1, 7, 4, 5, 3, 1, 7, 4, 4, 4, 8, 1, 7, 8, 1, 7, 4, 4, 4, 8, 1, 3, 6, 4, 8, 1, 3, 3},
+                         {3, 3, 2, 1, 1, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 2, 3, 3},
+                         {3, 7, 4, 5, 1, 3, 3, 1, 6, 5, 1, 6, 4, 4, 4, 4, 4, 4, 5, 1, 6, 5, 1, 3, 3, 1, 6, 4, 8, 3},
+                         {3, 6, 4, 8, 1, 7, 8, 1, 3, 3, 1, 7, 4, 4, 5, 6, 4, 4, 8, 1, 3, 3, 1, 7, 8, 1, 7, 4, 5, 3},
+                         {3, 3, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 1, 3, 3},
+                         {3, 3, 1, 6, 4, 4, 4, 4, 8, 7, 4, 4, 5, 1, 3, 3, 1, 6, 4, 4, 8, 7, 4, 4, 4, 4, 5, 1, 3, 3},
+                         {3, 3, 1, 7, 4, 4, 4, 4, 4, 4, 4, 4, 8, 1, 7, 8, 1, 7, 4, 4, 4, 4, 4, 4, 4, 4, 8, 1, 3, 3},
+                         {3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3},
+                         {3, 7, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 8, 3},
+                         {7, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 8}};
 
     for (int i = 0; i < numRows; i++)
     {
@@ -69,14 +68,15 @@ void Maze::Print()
 
 void Maze::Draw()
 {
-    int numberOne = std::floor((screenHeight - 50) / 32);
-    int numberTwo = std::floor(screenWidth / 30);
+    int numberOne = std::floor((screenHeight - 50) / 30);
+    int numberTwo = std::floor(screenWidth / 29);
 
     for (int i = 0; i < numRows; i++)
     {
         for (int j = 0; j < numCols; j++)
         {
-            // Vector2 center = {(float)(j * numberTwo + (0.5 * numberTwo)), (float)(i * numberOne + (0.5 * numberOne))};
+            // Vector2 center = {(float)(j * numberTwo + (0.5 * numberTwo)), (float)(i * numberOne + (0.5 *
+            // numberOne))};
             Vector2 center;
             Vector2 startPos;
             Vector2 endPos;
@@ -89,22 +89,19 @@ void Maze::Draw()
 
             switch (maze[i][j])
             {
-            case 1:
-            {
+            case 1: {
                 center = {(float)(j * numberTwo + (0.5 * numberTwo)), (float)(i * numberOne + (0.5 * numberOne))};
                 DrawCircleV(center, 4, RAYWHITE);
                 break;
             }
 
-            case 2:
-            {
+            case 2: {
                 center = {(float)(j * numberTwo + (0.5 * numberTwo)), (float)(i * numberOne + (0.5 * numberOne))};
                 DrawCircleV(center, 10, RAYWHITE);
                 break;
             }
 
-            case 3:
-            {
+            case 3: {
                 center = {(float)(j * numberTwo + (0.5 * numberTwo)), (float)(i * numberOne + (0.5 * numberOne))};
                 startPos = {center.x, (float)(i * numberOne)};
                 endPos = {center.x, (float)(i * numberOne + numberOne)};
@@ -112,8 +109,7 @@ void Maze::Draw()
                 break;
             }
 
-            case 4:
-            {
+            case 4: {
                 center = {(float)(j * numberTwo + (0.5 * numberTwo)), (float)(i * numberOne + (0.5 * numberOne))};
                 startPos = {(float)(j * numberTwo), center.y};
                 endPos = {(float)(j * numberTwo + numberTwo), center.y};
@@ -121,14 +117,10 @@ void Maze::Draw()
                 break;
             }
 
-            case 5:
-            {
+            case 5: {
                 // Calculate center and radii from the rectangle
-                rect = {
-                    (float)((j * numberTwo - (numberTwo * 0.4)) - 2),
-                    (float)(i * numberOne + (0.5f * numberOne)),
-                    (float)numberTwo,
-                    (float)numberOne};
+                rect = {(float)((j * numberTwo - (numberTwo * 0.4)) - 2), (float)(i * numberOne + (0.5f * numberOne)),
+                        (float)numberTwo, (float)numberOne};
 
                 center = {rect.x + rect.width / 2, rect.y + rect.height / 2};
                 radiusX = rect.width / 2.0f;
@@ -137,25 +129,16 @@ void Maze::Draw()
                 startAngleDeg = (3 * (PI / 2.0f)) * RAD2DEG;
                 endAngleDeg = (PI * 2.0f) * RAD2DEG;
 
-                DrawRing(
-                    {center.x, center.y},
-                    5,
-                    10,
-                    startAngleDeg,
-                    endAngleDeg,
-                    600, // segments (increase for smoother arc)
-                    DARKBLUE);
+                DrawRing({center.x, center.y}, 5, 10, startAngleDeg, endAngleDeg,
+                         600, // segments (increase for smoother arc)
+                         DARKBLUE);
                 break;
             }
 
-            case 6:
-            {
+            case 6: {
                 // Calculate center and radii from the rectangle
-                rect = {
-                    (float)((j * numberTwo + (numberTwo * 0.5))),
-                    (float)(i * numberOne + (0.5f * numberOne)),
-                    (float)numberTwo,
-                    (float)numberOne};
+                rect = {(float)((j * numberTwo + (numberTwo * 0.5))), (float)(i * numberOne + (0.5f * numberOne)),
+                        (float)numberTwo, (float)numberOne};
 
                 center = {rect.x + rect.width / 2, rect.y + rect.height / 2};
                 radiusX = rect.width / 2.0f;
@@ -164,24 +147,15 @@ void Maze::Draw()
                 startAngleDeg = (PI)*RAD2DEG;
                 endAngleDeg = (3 * (PI / 2.0f)) * RAD2DEG;
 
-                DrawRing(
-                    {center.x, center.y},
-                    5,
-                    10,
-                    startAngleDeg,
-                    endAngleDeg,
-                    600, // segments (increase for smoother arc)
-                    DARKBLUE);
+                DrawRing({center.x, center.y}, 5, 10, startAngleDeg, endAngleDeg,
+                         600, // segments (increase for smoother arc)
+                         DARKBLUE);
                 break;
             }
-            case 7:
-            {
+            case 7: {
                 // Calculate center and radii from the rectangle
-                rect = {
-                    (float)((j * numberTwo + (numberTwo * 0.5f))),
-                    (float)(i * numberOne - (0.4f * numberOne)),
-                    (float)numberTwo,
-                    (float)numberOne};
+                rect = {(float)((j * numberTwo + (numberTwo * 0.5f))), (float)(i * numberOne - (0.4f * numberOne)),
+                        (float)numberTwo, (float)numberOne};
 
                 center = {rect.x + rect.width / 2, rect.y + rect.height / 2};
                 radiusX = rect.width / 2.0f;
@@ -190,24 +164,15 @@ void Maze::Draw()
                 startAngleDeg = (PI / 2.0f) * RAD2DEG;
                 endAngleDeg = (PI)*RAD2DEG;
 
-                DrawRing(
-                    {center.x, center.y},
-                    5,
-                    10,
-                    startAngleDeg,
-                    endAngleDeg,
-                    600, // segments (increase for smoother arc)
-                    DARKBLUE);
+                DrawRing({center.x, center.y}, 5, 10, startAngleDeg, endAngleDeg,
+                         600, // segments (increase for smoother arc)
+                         DARKBLUE);
                 break;
             }
-            case 8:
-            {
+            case 8: {
                 // Calculate center and radii from the rectangle
-                rect = {
-                    (float)((j * numberTwo - (numberTwo * 0.4f)) - 2),
-                    (float)(i * numberOne - (0.4f * numberOne)),
-                    (float)numberTwo,
-                    (float)numberOne};
+                rect = {(float)((j * numberTwo - (numberTwo * 0.4f)) - 2), (float)(i * numberOne - (0.4f * numberOne)),
+                        (float)numberTwo, (float)numberOne};
 
                 center = {rect.x + rect.width / 2, rect.y + rect.height / 2};
                 radiusX = rect.width / 2.0f;
@@ -216,26 +181,19 @@ void Maze::Draw()
                 startAngleDeg = 0.0f;
                 endAngleDeg = (PI / 2.0f) * RAD2DEG;
 
-                DrawRing(
-                    {center.x, center.y},
-                    5,
-                    10,
-                    startAngleDeg,
-                    endAngleDeg,
-                    600, // segments (increase for smoother arc)
-                    DARKBLUE);
+                DrawRing({center.x, center.y}, 5, 10, startAngleDeg, endAngleDeg,
+                         600, // segments (increase for smoother arc)
+                         DARKBLUE);
                 break;
             }
-            case 9:
-            {
+            case 9: {
                 center = {(float)(j * numberTwo + (0.5 * numberTwo)), (float)(i * numberOne + (0.5 * numberOne))};
                 startPos = {(float)(j * numberTwo), center.y};
                 endPos = {(float)(j * numberTwo + numberTwo), center.y};
                 DrawLineEx(startPos, endPos, 3, RAYWHITE);
                 break;
             }
-            default:
-            {
+            default: {
                 std::cout << "lol!" << std::endl;
                 break;
             }
