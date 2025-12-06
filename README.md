@@ -24,12 +24,11 @@ My implementation of the classic Pacman game, built in C++ with raylib for rende
 
 ## TODO
 
-- [ ] Basic Player Input
-- [ ] Level Setup
+- [x] Basic Player Input
+- [ ] Creating the maze
 - [ ] Player Collisions
 - [ ] Basic Enemy
 - [ ] Enemy AI
-- [ ] Pellets
-- [ ] Big Pellets
 - [ ] Special Item
-- [ ] Game Logic
+- [ ] Game Over
+- [ ] Level Complete
