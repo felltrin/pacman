@@ -108,7 +108,7 @@ void Maze::Draw()
                 center = {(float)(j * numberTwo + (0.5 * numberTwo)), (float)(i * numberOne + (0.5 * numberOne))};
                 startPos = {center.x, (float)(i * numberOne)};
                 endPos = {center.x, (float)(i * numberOne + numberOne)};
-                DrawLineEx(startPos, endPos, 3, BLUE);
+                DrawLineEx(startPos, endPos, 3, DARKBLUE);
                 break;
             }
 
@@ -117,7 +117,7 @@ void Maze::Draw()
                 center = {(float)(j * numberTwo + (0.5 * numberTwo)), (float)(i * numberOne + (0.5 * numberOne))};
                 startPos = {(float)(j * numberTwo), center.y};
                 endPos = {(float)(j * numberTwo + numberTwo), center.y};
-                DrawLineEx(startPos, endPos, 3, BLUE);
+                DrawLineEx(startPos, endPos, 3, DARKBLUE);
                 break;
             }
 
@@ -144,7 +144,7 @@ void Maze::Draw()
                     startAngleDeg,
                     endAngleDeg,
                     600, // segments (increase for smoother arc)
-                    BLUE);
+                    DARKBLUE);
                 break;
             }
 
@@ -171,7 +171,7 @@ void Maze::Draw()
                     startAngleDeg,
                     endAngleDeg,
                     600, // segments (increase for smoother arc)
-                    BLUE);
+                    DARKBLUE);
                 break;
             }
             case 7:
@@ -197,7 +197,7 @@ void Maze::Draw()
                     startAngleDeg,
                     endAngleDeg,
                     600, // segments (increase for smoother arc)
-                    BLUE);
+                    DARKBLUE);
                 break;
             }
             case 8:
@@ -223,7 +223,15 @@ void Maze::Draw()
                     startAngleDeg,
                     endAngleDeg,
                     600, // segments (increase for smoother arc)
-                    BLUE);
+                    DARKBLUE);
+                break;
+            }
+            case 9:
+            {
+                center = {(float)(j * numberTwo + (0.5 * numberTwo)), (float)(i * numberOne + (0.5 * numberOne))};
+                startPos = {(float)(j * numberTwo), center.y};
+                endPos = {(float)(j * numberTwo + numberTwo), center.y};
+                DrawLineEx(startPos, endPos, 3, RAYWHITE);
                 break;
             }
             default:
