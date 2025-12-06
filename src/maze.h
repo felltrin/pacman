@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 #include <raylib.h>
+#include <cmath>
+#include <iostream>
 
 class Maze
 {
@@ -9,8 +11,9 @@ public:
     void Initialize();
     void Print();
     void Draw();
+    int maze[33][30];
 
 private:
-    int pacDots;
-    int energizers;
+    int numRows;
+    int numCols;
 };
