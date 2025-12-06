@@ -178,7 +178,7 @@ void Maze::Draw()
             {
                 // Calculate center and radii from the rectangle
                 rect = {
-                    (float)((j * numberTwo + (numberTwo * 0.5))),
+                    (float)((j * numberTwo + (numberTwo * 0.5f))),
                     (float)(i * numberOne - (0.4f * numberOne)),
                     (float)numberTwo,
                     (float)numberOne};
@@ -189,6 +189,32 @@ void Maze::Draw()
 
                 startAngleDeg = (PI / 2.0f) * RAD2DEG;
                 endAngleDeg = (PI)*RAD2DEG;
+
+                DrawRing(
+                    {center.x, center.y},
+                    5,
+                    10,
+                    startAngleDeg,
+                    endAngleDeg,
+                    600, // segments (increase for smoother arc)
+                    BLUE);
+                break;
+            }
+            case 8:
+            {
+                // Calculate center and radii from the rectangle
+                rect = {
+                    (float)((j * numberTwo - (numberTwo * 0.4f)) - 2),
+                    (float)(i * numberOne - (0.4f * numberOne)),
+                    (float)numberTwo,
+                    (float)numberOne};
+
+                center = {rect.x + rect.width / 2, rect.y + rect.height / 2};
+                radiusX = rect.width / 2.0f;
+                radiusY = rect.height / 2.0f;
+
+                startAngleDeg = 0.0f;
+                endAngleDeg = (PI / 2.0f) * RAD2DEG;
 
                 DrawRing(
                     {center.x, center.y},
