@@ -34,6 +34,14 @@ class Maze
      * @brief The maze grid that represents the current game state.
      */
     int maze[33][30];
+    /**
+     * @brief Getter function to get the number of rows.
+     */
+    int getNumRows();
+    /**
+     * @brief A getter function to get the number of columns.
+     */
+    int getNumCols();
 
   private:
     int numRows; /**< Rows number used for initialized the maze grid and drawing said grid */

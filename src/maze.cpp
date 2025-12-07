@@ -202,3 +202,13 @@ void Maze::Draw()
         }
     }
 }
+
+int Maze::getNumCols()
+{
+    return numCols;
+}
+
+int Maze::getNumRows()
+{
+    return numRows;
+}
