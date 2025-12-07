@@ -1,4 +1,4 @@
 #include "constants.h"
 
-const int screenWidth = 500;
-const int screenHeight = 620;
+const int screenWidth = 900;
+const int screenHeight = 950;

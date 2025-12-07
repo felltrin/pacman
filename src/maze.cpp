@@ -69,8 +69,8 @@ void Maze::Print()
 
 void Maze::Draw()
 {
-    int numberOne = std::floor((screenHeight - 50) / 30);
-    int numberTwo = std::floor(screenWidth / 29);
+    int numberOne = std::floor((screenHeight - 50) / 32);
+    int numberTwo = std::floor(screenWidth / 30);
 
     for (int i = 0; i < numRows; i++)
     {
@@ -123,15 +123,15 @@ void Maze::Draw()
                 rect = {(float)((j * numberTwo - (numberTwo * 0.4)) - 2), (float)(i * numberOne + (0.5f * numberOne)),
                         (float)numberTwo, (float)numberOne};
 
-                center = {rect.x + rect.width / 2, rect.y + rect.height / 2};
+                center = {(rect.x + rect.width / 2) - 1, (rect.y + rect.height / 2) + 1};
                 radiusX = rect.width / 2.0f;
                 radiusY = rect.height / 2.0f;
 
                 startAngleDeg = (3 * (PI / 2.0f)) * RAD2DEG;
                 endAngleDeg = (PI * 2.0f) * RAD2DEG;
 
-                DrawRing({center.x, center.y}, 5, 10, startAngleDeg, endAngleDeg,
-                         600, // segments (increase for smoother arc)
+                DrawRing({center.x, center.y}, 13, 16, startAngleDeg, endAngleDeg,
+                         6000, // segments (increase for smoother arc)
                          DARKBLUE);
                 break;
             }
@@ -141,14 +141,14 @@ void Maze::Draw()
                 rect = {(float)((j * numberTwo + (numberTwo * 0.5))), (float)(i * numberOne + (0.5f * numberOne)),
                         (float)numberTwo, (float)numberOne};
 
-                center = {rect.x + rect.width / 2, rect.y + rect.height / 2};
+                center = {rect.x + rect.width / 2, (rect.y + rect.height / 2) + 1};
                 radiusX = rect.width / 2.0f;
                 radiusY = rect.height / 2.0f;
 
                 startAngleDeg = (PI)*RAD2DEG;
                 endAngleDeg = (3 * (PI / 2.0f)) * RAD2DEG;
 
-                DrawRing({center.x, center.y}, 5, 10, startAngleDeg, endAngleDeg,
+                DrawRing({center.x, center.y}, 13, 16, startAngleDeg, endAngleDeg,
                          600, // segments (increase for smoother arc)
                          DARKBLUE);
                 break;
@@ -158,14 +158,14 @@ void Maze::Draw()
                 rect = {(float)((j * numberTwo + (numberTwo * 0.5f))), (float)(i * numberOne - (0.4f * numberOne)),
                         (float)numberTwo, (float)numberOne};
 
-                center = {rect.x + rect.width / 2, rect.y + rect.height / 2};
+                center = {rect.x + rect.width / 2, (rect.y + rect.height / 2) - 3};
                 radiusX = rect.width / 2.0f;
                 radiusY = rect.height / 2.0f;
 
                 startAngleDeg = (PI / 2.0f) * RAD2DEG;
-                endAngleDeg = (PI)*RAD2DEG;
+                endAngleDeg = ((PI)*RAD2DEG) + 1;
 
-                DrawRing({center.x, center.y}, 5, 10, startAngleDeg, endAngleDeg,
+                DrawRing({center.x, center.y}, 13, 16, startAngleDeg, endAngleDeg,
                          600, // segments (increase for smoother arc)
                          DARKBLUE);
                 break;
@@ -175,14 +175,14 @@ void Maze::Draw()
                 rect = {(float)((j * numberTwo - (numberTwo * 0.4f)) - 2), (float)(i * numberOne - (0.4f * numberOne)),
                         (float)numberTwo, (float)numberOne};
 
-                center = {rect.x + rect.width / 2, rect.y + rect.height / 2};
+                center = {(rect.x + rect.width / 2) - 1, (rect.y + rect.height / 2) - 3};
                 radiusX = rect.width / 2.0f;
                 radiusY = rect.height / 2.0f;
 
                 startAngleDeg = 0.0f;
                 endAngleDeg = (PI / 2.0f) * RAD2DEG;
 
-                DrawRing({center.x, center.y}, 5, 10, startAngleDeg, endAngleDeg,
+                DrawRing({center.x, center.y}, 13, 16, startAngleDeg, endAngleDeg,
                          600, // segments (increase for smoother arc)
                          DARKBLUE);
                 break;
