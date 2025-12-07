@@ -21,11 +21,9 @@ void Player::Initialize()
         ss << ASSETS_PATH "player_images/" << index << ".png";
         std::string fileName = ss.str();
         const char *c = fileName.c_str();
-        std::cout << c << std::endl;
         Texture2D texture = LoadTexture(c);
         playerTextures[i] = texture;
     }
-    std::cout << "The initializing function has finished" << std::endl;
 }
 
 void Player::Print()
