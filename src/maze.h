@@ -1,4 +1,5 @@
 #pragma once
+#include "raylib.h"
 #include <cmath>
 #include <iostream>
 #include <vector>
@@ -42,8 +43,17 @@ class Maze
      * @brief A getter function to get the number of columns.
      */
     int getNumCols();
+    /**
+     * @brief A getter function to get the current color of the maze.
+     */
+    Color getMazeColor();
+    /**
+     * @brief A setter function to set the current color of the maze.
+     */
+    void setMazeColor(Color color);
 
   private:
-    int numRows; /**< Rows number used for initialized the maze grid and drawing said grid */
-    int numCols; /**< Columns number used for initialized the maze grid and drawing said grid */
+    int numRows;     /**< Rows number used for initialized the maze grid and drawing said grid */
+    int numCols;     /**< Columns number used for initialized the maze grid and drawing said grid */
+    Color mazeColor; /**< The color that the grid is drawn in */
 };

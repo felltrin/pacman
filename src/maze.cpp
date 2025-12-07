@@ -7,6 +7,7 @@ Maze::Maze()
 {
     numRows = 33;
     numCols = 30;
+    mazeColor = DARKBLUE;
     Initialize();
 }
 
@@ -106,7 +107,7 @@ void Maze::Draw()
                 center = {(float)(j * numberTwo + (0.5 * numberTwo)), (float)(i * numberOne + (0.5 * numberOne))};
                 startPos = {center.x, (float)(i * numberOne)};
                 endPos = {center.x, (float)(i * numberOne + numberOne)};
-                DrawLineEx(startPos, endPos, 3, DARKBLUE);
+                DrawLineEx(startPos, endPos, 3, mazeColor);
                 break;
             }
 
@@ -114,7 +115,7 @@ void Maze::Draw()
                 center = {(float)(j * numberTwo + (0.5 * numberTwo)), (float)(i * numberOne + (0.5 * numberOne))};
                 startPos = {(float)(j * numberTwo), center.y};
                 endPos = {(float)(j * numberTwo + numberTwo), center.y};
-                DrawLineEx(startPos, endPos, 3, DARKBLUE);
+                DrawLineEx(startPos, endPos, 3, mazeColor);
                 break;
             }
 
@@ -132,7 +133,7 @@ void Maze::Draw()
 
                 DrawRing({center.x, center.y}, 13, 16, startAngleDeg, endAngleDeg,
                          6000, // segments (increase for smoother arc)
-                         DARKBLUE);
+                         mazeColor);
                 break;
             }
 
@@ -150,7 +151,7 @@ void Maze::Draw()
 
                 DrawRing({center.x, center.y}, 13, 16, startAngleDeg, endAngleDeg,
                          600, // segments (increase for smoother arc)
-                         DARKBLUE);
+                         mazeColor);
                 break;
             }
             case 7: {
@@ -167,7 +168,7 @@ void Maze::Draw()
 
                 DrawRing({center.x, center.y}, 13, 16, startAngleDeg, endAngleDeg,
                          600, // segments (increase for smoother arc)
-                         DARKBLUE);
+                         mazeColor);
                 break;
             }
             case 8: {
@@ -184,7 +185,7 @@ void Maze::Draw()
 
                 DrawRing({center.x, center.y}, 13, 16, startAngleDeg, endAngleDeg,
                          600, // segments (increase for smoother arc)
-                         DARKBLUE);
+                         mazeColor);
                 break;
             }
             case 9: {
@@ -211,4 +212,14 @@ int Maze::getNumCols()
 int Maze::getNumRows()
 {
     return numRows;
+}
+
+Color Maze::getMazeColor()
+{
+    return mazeColor;
+}
+
+void Maze::setMazeColor(Color color)
+{
+    mazeColor = color;
 }
