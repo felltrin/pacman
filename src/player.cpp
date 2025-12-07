@@ -31,9 +31,9 @@ void Player::Initialize()
     }
 }
 
-void Player::Print()
-{
-}
+// void Player::Print()
+// {
+// }
 
 void Player::Draw()
 {

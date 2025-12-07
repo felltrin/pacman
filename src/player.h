@@ -2,8 +2,12 @@
 #include "raylib.h"
 
 /**
- * @file player.h
- * @brief Contains the information related to drawing the player and player logic.
+ * @class Player
+ * @brief Manages the loading and drawing of the player.
+ *
+ * The Player class is responsible for all the things that relate to the Player.
+ * It contains the fields and functions to draw and animate the player on the screen.
+ *
  */
 
 class Player
@@ -13,15 +17,27 @@ class Player
      * @brief Constructs a Player object at the default starting position.
      */
     Player();
+    /**
+     * @brief Initializes the player textures array to download and fill the assets folder.
+     */
     void Initialize();
-    void Print();
+    // void Print();
+    /**
+     * @brief Draws the player according to which direction they pressed on their keyboard.
+     */
     void Draw();
+    /**
+     * @brief Updates the counter to get the player animated.
+     */
     void Update();
+    /**
+     * @brief Field that updates for the player to be animated.
+     */
     int counter;
 
   private:
-    Texture2D playerTextures[4];
-    float xPos;
-    float yPos;
-    int direction;
+    Texture2D playerTextures[4]; /**< All the player textures for each direction the player is facing */
+    float xPos;                  /**< The x-coordinate starting position */
+    float yPos;                  /**< The y-coordinate starting position */
+    int direction;               /**< The direction that the player is facing represented as an integer. */
 };
