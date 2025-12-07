@@ -82,3 +82,18 @@ void Player::Update()
         counter = 0;
     }
 }
+
+float Player::getXPos()
+{
+    return xPos;
+}
+
+float Player::getYPos()
+{
+    return yPos;
+}
+
+int Player::getPlayerDirection()
+{
+    return direction;
+}

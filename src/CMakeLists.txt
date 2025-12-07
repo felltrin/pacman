@@ -19,3 +19,6 @@ add_executable(letthisbefinal main.cpp ${GAME_SOURCES})
 
 target_link_libraries(letthisbefinal PRIVATE raylib)
 target_link_libraries(PacManMainLib PRIVATE raylib)
+
+# Setting ASSETS_PATH
+target_compile_definitions(${PROJECT_NAME} PUBLIC ASSETS_PATH="${CMAKE_CURRENT_SOURCE_DIR}/assets/")

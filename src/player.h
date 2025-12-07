@@ -31,6 +31,18 @@ class Player
      */
     void Update();
     /**
+     * @brief Getter function to return the starting x position
+     */
+    float getXPos();
+    /**
+     * @brief Getter function to return the starting y position
+     */
+    float getYPos();
+    /**
+     * @brief Getter function to retreive the player's direction
+     */
+    int getPlayerDirection();
+    /**
      * @brief Field that updates for the player to be animated.
      */
     int counter;
