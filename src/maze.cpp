@@ -1,6 +1,7 @@
 #include "maze.h"
 #include "constants.h"
 #include "levels.h"
+#include <raylib.h>
 
 Maze::Maze()
 {
