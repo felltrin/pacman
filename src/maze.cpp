@@ -70,8 +70,8 @@ void Maze::Print()
 
 void Maze::Draw()
 {
-    int numberOne = std::floor((screenHeight - 50) / 32);
-    int numberTwo = std::floor(screenWidth / 30);
+    int numberOne = std::floor((UI::SCREEN_HEIGHT - 50) / 32);
+    int numberTwo = std::floor(UI::SCREEN_WIDTH / 30);
 
     for (int i = 0; i < numRows; i++)
     {

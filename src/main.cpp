@@ -6,13 +6,15 @@
 
 int main(int, char **)
 {
-    InitWindow(screenWidth, screenHeight, "PacMan");
+    InitWindow(UI::SCREEN_WIDTH, UI::SCREEN_HEIGHT, "PacMan");
     Maze maze = Maze();
     Player player = Player();
     SetTargetFPS(60);
 
     while (!WindowShouldClose())
     {
+        player.Update();
+
         BeginDrawing();
         ClearBackground(BLACK);
         maze.Draw();
