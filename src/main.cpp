@@ -1,7 +1,6 @@
 #include "constants.h"
 #include "maze.h"
 #include "player.h"
-#include <iostream>
 #include <raylib.h>
 
 int main(int, char **)

@@ -15,7 +15,7 @@ TEST_CASE("Maze constructor initializes correctly", "[Maze]")
     REQUIRE(maze.maze[13][15] == 9);
 }
 
-TEST_CASE("Plyaer constructor initializes correctly", "[Player]")
+TEST_CASE("Player constructor initializes correctly", "[Player]")
 {
     Player player = Player();
 

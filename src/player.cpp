@@ -31,10 +31,6 @@ void Player::Initialize()
     }
 }
 
-// void Player::Print()
-// {
-// }
-
 void Player::Draw()
 {
     Texture2D texture;
@@ -53,21 +49,21 @@ void Player::Draw()
         value = (double)(counter / 5);
         index = static_cast<int>(floor(value));
         texture = playerTextures[index];
-        DrawTextureEx(texture, {xPos, yPos}, 180.0f, 0.09f, WHITE);
+        DrawTextureEx(texture, {xPos + 45.0f, yPos + 45.0f}, 180.0f, 0.09f, WHITE);
     }
     else if (direction == 2)
     {
         value = (double)(counter / 5);
         index = static_cast<int>(floor(value));
         texture = playerTextures[index];
-        DrawTextureEx(texture, {xPos, yPos}, 90.0f, 0.09f, WHITE);
+        DrawTextureEx(texture, {xPos, yPos + 45.0f}, -90.0f, 0.09f, WHITE);
     }
     else if (direction == 3)
     {
         value = (double)(counter / 5);
         index = static_cast<int>(floor(value));
         texture = playerTextures[index];
-        DrawTextureEx(texture, {xPos, yPos}, 270.0f, 0.09f, WHITE);
+        DrawTextureEx(texture, {xPos + 45.0f, yPos}, 90.0f, 0.09f, WHITE);
     }
 }
 
@@ -76,11 +72,24 @@ void Player::Update()
     if (counter < 19)
     {
         counter++;
+        // if (counter > 3)
+        // {
+        //     flicker = false;
+        // }
     }
     else
     {
         counter = 0;
+        // flicker = true;
     }
+    if (IsKeyDown(KEY_D))
+        direction = 0;
+    else if (IsKeyDown(KEY_A))
+        direction = 1;
+    else if (IsKeyDown(KEY_W))
+        direction = 2;
+    else if (IsKeyDown(KEY_S))
+        direction = 3;
 }
 
 float Player::getXPos()
