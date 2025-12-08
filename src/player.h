@@ -21,7 +21,6 @@ class Player
      * @brief Initializes the player textures array to download and fill the assets folder.
      */
     void Initialize();
-    // void Print();
     /**
      * @brief Draws the player according to which direction they pressed on their keyboard.
      */

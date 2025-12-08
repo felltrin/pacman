@@ -77,8 +77,6 @@ void Maze::Draw()
     {
         for (int j = 0; j < numCols; j++)
         {
-            // Vector2 center = {(float)(j * numberTwo + (0.5 * numberTwo)), (float)(i * numberOne + (0.5 *
-            // numberOne))};
             Vector2 center;
             Vector2 startPos;
             Vector2 endPos;
@@ -98,8 +96,11 @@ void Maze::Draw()
             }
 
             case 2: {
+                // if (!flicker)
+                // {
                 center = {(float)(j * numberTwo + (0.5 * numberTwo)), (float)(i * numberOne + (0.5 * numberOne))};
                 DrawCircleV(center, 10, RAYWHITE);
+                // }
                 break;
             }
 
