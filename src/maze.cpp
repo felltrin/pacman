@@ -1,7 +1,9 @@
 #include "maze.h"
 #include "constants.h"
+#include "game.h"
 #include "levels.h"
 #include <raylib.h>
+
 
 Maze::Maze()
 {
@@ -96,11 +98,11 @@ void Maze::Draw()
             }
 
             case 2: {
-                // if (!flicker)
-                // {
-                center = {(float)(j * numberTwo + (0.5 * numberTwo)), (float)(i * numberOne + (0.5 * numberOne))};
-                DrawCircleV(center, 10, RAYWHITE);
-                // }
+                if (!Game::instance().getFlicker())
+                {
+                    center = {(float)(j * numberTwo + (0.5 * numberTwo)), (float)(i * numberOne + (0.5 * numberOne))};
+                    DrawCircleV(center, 10, RAYWHITE);
+                }
                 break;
             }
 

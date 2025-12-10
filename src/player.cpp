@@ -1,5 +1,6 @@
 #include "player.h"
 #include "constants.h"
+#include "game.h"
 #include <cmath>
 #include <iostream>
 #include <raylib.h>
@@ -72,15 +73,16 @@ void Player::Update()
     if (counter < 19)
     {
         counter++;
-        // if (counter > 3)
-        // {
-        //     flicker = false;
-        // }
+        if (counter >= 10)
+        {
+            Game::instance().setFlicker(!Game::instance().getFlicker());
+            counter = 0;
+        }
     }
     else
     {
         counter = 0;
-        // flicker = true;
+        Game::instance().setFlicker(new bool(true));
     }
     if (IsKeyDown(KEY_D))
         direction = 0;
