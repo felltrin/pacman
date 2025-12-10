@@ -73,10 +73,9 @@ void Player::Update()
     if (counter < 19)
     {
         counter++;
-        if (counter >= 10)
+        if (counter > 3)
         {
             Game::instance().setFlicker(!Game::instance().getFlicker());
-            counter = 0;
         }
     }
     else
