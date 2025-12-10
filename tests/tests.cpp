@@ -1,6 +1,8 @@
+#include "game.h"
 #include "maze.h"
 #include "player.h"
 #include <catch2/catch_test_macros.hpp>
+#include <memory>
 
 TEST_CASE("Maze constructor initializes correctly", "[Maze]")
 {
@@ -23,4 +25,19 @@ TEST_CASE("Player constructor initializes correctly", "[Player]")
     REQUIRE(player.getYPos() == 663.0f);
     REQUIRE(player.getPlayerDirection() == 0);
     REQUIRE(player.counter == 0);
+}
+
+TEST_CASE("State should persist across calls to setFlicker()", "[Game]")
+{
+    Game sOne = Game::instance();
+    Game sTwo = Game::instance();
+    sOne.setFlicker(new bool(true));
+    REQUIRE(sOne.getFlicker() == sTwo.getFlicker());
+}
+
+TEST_CASE("the instance method should return the same object", "[Game]")
+{
+    auto &sOne = Game::instance();
+    auto &sTwo = Game::instance();
+    REQUIRE(&sOne == &sTwo);
 }
