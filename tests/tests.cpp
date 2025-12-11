@@ -54,3 +54,16 @@ TEST_CASE("The checkPosition function is working as intended", "[Player]")
     REQUIRE(p.turnsAllowed[0] == true);
     REQUIRE(p.turnsAllowed[3] == false);
 }
+
+TEST_CASE("The checkCollisions function works as intended", "[Player]")
+{
+    Player p = Player();
+    Maze m = Maze();
+    p.setXPos(790.0f);
+    p.setYPos(663.0f);
+    p.setCenterXPos(811.0f);
+    p.setCenterYPos(687.0f);
+    p.checkCollisions(m.maze);
+    REQUIRE(Game::instance().getScore() == 50);
+    REQUIRE(Game::instance().getScore() != 10);
+}

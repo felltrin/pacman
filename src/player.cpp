@@ -336,7 +336,6 @@ void Player::checkPosition(int level[33][30])
             {
                 row = std::floor(this->centerY / numberOne);
                 column = std::floor((this->centerX - numberThree) / numberTwo);
-                std::cout << level[row][column] << std::endl;
                 if (level[row][column] < 3)
                 {
                     turns[1] = true;
@@ -403,4 +402,29 @@ int Player::getCounter()
 void Player::setPlayerDirection(int d)
 {
     this->direction = d;
+}
+
+void Player::checkCollisions(int level[33][30])
+{
+    // put this into the constants file after implementing the function
+    float numberOne = std::floor((UI::SCREEN_HEIGHT - 50) / 32);
+    float numberTwo = std::floor(UI::SCREEN_WIDTH / 30);
+    int row, col;
+    if ((0.0f < this->getXPos()) && (this->getXPos() < 870.0f))
+    {
+        row = std::floor(this->centerY / numberOne);
+        col = std::floor(this->centerX / numberTwo);
+        if (level[row][col] == 1)
+        {
+            level[row][col] = 0;
+            int curScore = Game::instance().getScore();
+            Game::instance().setScore(curScore += 10);
+        }
+        if (level[row][col] == 2)
+        {
+            level[row][col] = 0;
+            int curScore = Game::instance().getScore();
+            Game::instance().setScore(curScore += 50);
+        }
+    }
 }
