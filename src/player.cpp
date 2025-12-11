@@ -380,7 +380,7 @@ Vector2 Player::movePlayer(float playX, float playY)
     {
         playX += this->playerSpeed;
     }
-    if (this->direction == 1 && this->turnsAllowed[1])
+    else if (this->direction == 1 && this->turnsAllowed[1])
     {
         playX -= this->playerSpeed;
     }
@@ -388,7 +388,7 @@ Vector2 Player::movePlayer(float playX, float playY)
     {
         playY -= this->playerSpeed;
     }
-    if (this->direction == 3 && this->turnsAllowed[3])
+    else if (this->direction == 3 && this->turnsAllowed[3])
     {
         playY += this->playerSpeed;
     }
