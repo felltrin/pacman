@@ -3,6 +3,7 @@
 Game::Game()
 {
     this->flicker_ = new bool(false);
+    this->score_ = 0;
 }
 
 Game &Game::instance()
@@ -19,4 +20,14 @@ bool &Game::getFlicker()
 void Game::setFlicker(bool flicker)
 {
     *this->flicker_ = flicker;
+}
+
+int Game::getScore() const
+{
+    return this->score_;
+}
+
+void Game::setScore(int score)
+{
+    this->score_ = score;
 }

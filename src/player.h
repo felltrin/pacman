@@ -90,6 +90,10 @@ class Player
      * @brief An array to keep track of where the player is allowed to go
      */
     bool turnsAllowed[4];
+    /**
+     * @brief Checks if the current player has interacted with the pacdots
+     */
+    void checkCollisions(int level[33][30]);
 
   private:
     Texture2D playerTextures[4]; /**< All the player textures for each direction the player is facing */
