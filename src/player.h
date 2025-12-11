@@ -46,9 +46,24 @@ class Player
      */
     int counter;
 
+    void setXPos(float x);
+    void setYPos(float y);
+    void setCenterXPos(float x);
+    void setCenterYPos(float y);
+    float getCenterXPos();
+    float getCenterYPos();
+    void setTurnsAllowed(bool turns[4]);
+    void checkPosition(float centerX, float centerY, int level[33][30], int direction);
+    Vector2 movePlayer(float playX, float playY);
+
   private:
     Texture2D playerTextures[4]; /**< All the player textures for each direction the player is facing */
-    float xPos;                  /**< The x-coordinate starting position */
-    float yPos;                  /**< The y-coordinate starting position */
-    int direction;               /**< The direction that the player is facing represented as an integer. */
+    bool turnsAllowed[4];
+    float xPos;    /**< The x-coordinate starting position */
+    float yPos;    /**< The y-coordinate starting position */
+    int direction; /**< The direction that the player is facing represented as an integer. */
+    float centerX;
+    float centerY;
+    int directionCommand;
+    int playerSpeed;
 };

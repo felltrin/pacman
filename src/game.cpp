@@ -2,7 +2,7 @@
 
 Game::Game()
 {
-    flicker_ = new bool(false);
+    this->flicker_ = new bool(false);
 }
 
 Game &Game::instance()
@@ -13,10 +13,10 @@ Game &Game::instance()
 
 bool &Game::getFlicker()
 {
-    return *flicker_;
+    return *this->flicker_;
 }
 
 void Game::setFlicker(bool flicker)
 {
-    *flicker_ = flicker;
+    *this->flicker_ = flicker;
 }
