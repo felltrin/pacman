@@ -416,15 +416,12 @@ void Player::checkCollisions(int level[33][30])
         col = std::floor(this->centerX / numberTwo);
         if (level[row][col] == 1)
         {
-            std::cout << this->getXPos() << ", " << this->getYPos() << std::endl;
             level[row][col] = 0;
             int curScore = Game::instance().getScore();
             Game::instance().setScore(curScore += 10);
         }
         if (level[row][col] == 2)
         {
-            std::cout << this->getXPos() << ", " << this->getYPos() << std::endl;
-            std::cout << this->getCenterXPos() << ", " << this->getCenterYPos() << std::endl;
             level[row][col] = 0;
             int curScore = Game::instance().getScore();
             Game::instance().setScore(curScore += 50);
