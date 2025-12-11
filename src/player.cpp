@@ -258,9 +258,9 @@ void Player::checkPosition(int level[33][30])
         if (this->direction == 2 || this->direction == 3)
         {
             int row, column;
-            if (((int)this->centerX % (int)numberTwo >= 12) && ((int)this->centerX % (int)numberTwo <= 18))
+            if (((int)this->centerX % (int)numberTwo >= 10) && ((int)this->centerX % (int)numberTwo <= 20))
             {
-                row = std::floor((this->centerY + numberThree) / numberOne);
+                row = std::floor((this->centerY + numberThree + 3) / numberOne);
                 column = std::floor(this->centerX / numberTwo);
                 if (level[row][column] < 3)
                 {
@@ -270,7 +270,7 @@ void Player::checkPosition(int level[33][30])
                 {
                     turns[3] = false;
                 }
-                row = std::floor((this->centerY - numberThree) / numberOne);
+                row = std::floor((this->centerY - numberThree - 3) / numberOne);
                 column = std::floor(this->centerX / numberTwo);
                 if (level[row][column] < 3)
                 {
@@ -281,7 +281,7 @@ void Player::checkPosition(int level[33][30])
                     turns[2] = false;
                 }
             }
-            if (((int)this->centerY % (int)numberOne >= 12) && ((int)this->centerY % (int)numberOne <= 18))
+            if (((int)this->centerY % (int)numberOne >= 10) && ((int)this->centerY % (int)numberOne <= 20))
             {
                 row = std::floor(this->centerY / numberOne);
                 column = std::floor((this->centerX - numberTwo) / numberTwo);
@@ -309,7 +309,7 @@ void Player::checkPosition(int level[33][30])
         if (this->direction == 0 || this->direction == 1)
         {
             int row, column;
-            if (((int)this->centerX % (int)numberTwo >= 12) && ((int)this->centerX % (int)numberTwo <= 18))
+            if (((int)this->centerX % (int)numberTwo >= 10) && ((int)this->centerX % (int)numberTwo <= 20))
             {
                 row = std::floor((this->centerY + numberOne) / numberOne);
                 column = std::floor(this->centerX / numberTwo);
@@ -332,10 +332,11 @@ void Player::checkPosition(int level[33][30])
                     turns[2] = false;
                 }
             }
-            if (((int)this->centerY % (int)numberOne >= 12) && ((int)this->centerY % (int)numberOne <= 18))
+            if (((int)this->centerY % (int)numberOne >= 10) && ((int)this->centerY % (int)numberOne <= 20))
             {
                 row = std::floor(this->centerY / numberOne);
                 column = std::floor((this->centerX - numberThree) / numberTwo);
+                std::cout << level[row][column] << std::endl;
                 if (level[row][column] < 3)
                 {
                     turns[1] = true;
@@ -344,8 +345,8 @@ void Player::checkPosition(int level[33][30])
                 {
                     turns[1] = false;
                 }
-                row = std::floor(centerY / numberOne);
-                column = std::floor((centerX + numberThree) / numberTwo);
+                row = std::floor(this->centerY / numberOne);
+                column = std::floor((this->centerX + numberThree) / numberTwo);
                 if (level[row][column] < 3)
                 {
                     turns[0] = true;
