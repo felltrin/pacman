@@ -20,11 +20,12 @@ TEST_CASE("Maze constructor initializes correctly", "[Maze]")
 TEST_CASE("Player constructor initializes correctly", "[Player]")
 {
     Player player = Player();
+    int counter = player.getCounter();
 
     REQUIRE(player.getXPos() == 450.0f);
     REQUIRE(player.getYPos() == 663.0f);
     REQUIRE(player.getPlayerDirection() == 0);
-    REQUIRE(player.counter == 0);
+    REQUIRE(counter == 0);
 }
 
 TEST_CASE("State should persist across calls to setFlicker()", "[Game]")
@@ -40,4 +41,16 @@ TEST_CASE("the instance method should return the same object", "[Game]")
     auto &sOne = Game::instance();
     auto &sTwo = Game::instance();
     REQUIRE(&sOne == &sTwo);
+}
+
+TEST_CASE("The checkPosition function is working as intended", "[Player]")
+{
+    Player p = Player();
+    Maze m = Maze();
+    p.setCenterXPos(13.0f);
+    p.setCenterYPos(437.0f);
+    p.setPlayerDirection(1);
+    p.checkPosition(m.maze);
+    REQUIRE(p.turnsAllowed[0] == true);
+    REQUIRE(p.turnsAllowed[3] == false);
 }

@@ -137,11 +137,11 @@ void Player::Update()
         }
     }
 
-    if (Player::getXPos() > 900)
+    if (Player::getXPos() > 900.0f)
     {
         this->setXPos(-47.0f);
     }
-    else if (this->getXPos() < -50)
+    else if (this->getXPos() < -50.0f)
     {
         this->setXPos(897.0f);
     }
@@ -192,7 +192,7 @@ float Player::getCenterYPos()
     return this->centerY;
 };
 
-void Player::checkPosition(float centerX, float centerY, int level[33][30], int direction)
+void Player::checkPosition(int level[33][30])
 {
     static bool turns[4] = {false, false, false, false};
 
@@ -340,7 +340,7 @@ void Player::checkPosition(float centerX, float centerY, int level[33][30], int 
                 {
                     turns[1] = true;
                 }
-                else
+                else if (row != 15 && column != -1)
                 {
                     turns[1] = false;
                 }
@@ -350,7 +350,7 @@ void Player::checkPosition(float centerX, float centerY, int level[33][30], int 
                 {
                     turns[0] = true;
                 }
-                else
+                else if (row != 15 && column != -1)
                 {
                     turns[0] = false;
                 }
@@ -392,4 +392,14 @@ Vector2 Player::movePlayer(float playX, float playY)
         playY += this->playerSpeed;
     }
     return {playX, playY};
+}
+
+int Player::getCounter()
+{
+    return this->counter;
+}
+
+void Player::setPlayerDirection(int d)
+{
+    this->direction = d;
 }

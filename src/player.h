@@ -42,6 +42,10 @@ class Player
      */
     int getPlayerDirection();
     /**
+     * @brief Sets the player's direction
+     */
+    void setPlayerDirection(int d);
+    /**
      * @brief Setter function to set the player's x position
      */
     void setXPos(float x);
@@ -73,15 +77,22 @@ class Player
      * @brief Checks the current player position to their surroundings to figure out which directions the player can
      * turn
      */
-    void checkPosition(float centerX, float centerY, int level[33][30], int direction);
+    void checkPosition(int level[33][30]);
     /**
      * @brief Moves the player by player speed in the direction they want to go and are able to
      */
     Vector2 movePlayer(float playX, float playY);
+    /**
+     * @brief Getter function to retreive the counter variable value
+     */
+    int getCounter();
+    /**
+     * @brief An array to keep track of where the player is allowed to go
+     */
+    bool turnsAllowed[4];
 
   private:
     Texture2D playerTextures[4]; /**< All the player textures for each direction the player is facing */
-    bool turnsAllowed[4];        /**< An array to keep track of where the player is allowed to go */
     float xPos;                  /**< The x-coordinate starting position */
     float yPos;                  /**< The y-coordinate starting position */
     int direction;               /**< The direction that the player is facing represented as an integer. */

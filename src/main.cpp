@@ -13,14 +13,14 @@ int main(int, char **)
 
     while (!WindowShouldClose())
     {
+        player.checkPosition(maze.maze);
+        player.Update();
+
         BeginDrawing();
         ClearBackground(BLACK);
         maze.Draw();
         player.Draw();
         EndDrawing();
-
-        player.checkPosition(player.getCenterXPos(), player.getCenterYPos(), maze.maze, player.getPlayerDirection());
-        player.Update();
     }
 
     CloseWindow();
