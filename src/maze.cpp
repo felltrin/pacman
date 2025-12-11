@@ -4,12 +4,11 @@
 #include "levels.h"
 #include <raylib.h>
 
-
 Maze::Maze()
 {
-    numRows = 33;
-    numCols = 30;
-    mazeColor = DARKBLUE;
+    this->numRows = 33;
+    this->numCols = 30;
+    this->mazeColor = DARKBLUE;
     Initialize();
 }
 
@@ -48,23 +47,22 @@ void Maze::Initialize()
                          {3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3},
                          {3, 7, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 8, 3},
                          {7, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 8}};
-
-    for (int i = 0; i < numRows; i++)
+    for (int i = 0; i < this->numRows; i++)
     {
-        for (int j = 0; j < numCols; j++)
+        for (int j = 0; j < this->numCols; j++)
         {
-            maze[i][j] = board[i][j];
+            this->maze[i][j] = board[i][j];
         }
     }
 }
 
 void Maze::Print()
 {
-    for (int i = 0; i < numRows; i++)
+    for (int i = 0; i < this->numRows; i++)
     {
-        for (int j = 0; j < numCols; j++)
+        for (int j = 0; j < this->numCols; j++)
         {
-            std::cout << maze[i][j] << " ";
+            std::cout << this->maze[i][j] << " ";
         }
         std::cout << std::endl;
     }
@@ -89,7 +87,7 @@ void Maze::Draw()
             float startAngleDeg;
             float endAngleDeg;
 
-            switch (maze[i][j])
+            switch (this->maze[i][j])
             {
             case 1: {
                 center = {(float)(j * numberTwo + (0.5 * numberTwo)), (float)(i * numberOne + (0.5 * numberOne))};
@@ -209,20 +207,20 @@ void Maze::Draw()
 
 int Maze::getNumCols()
 {
-    return numCols;
+    return this->numCols;
 }
 
 int Maze::getNumRows()
 {
-    return numRows;
+    return this->numRows;
 }
 
 Color Maze::getMazeColor()
 {
-    return mazeColor;
+    return this->mazeColor;
 }
 
 void Maze::setMazeColor(Color color)
 {
-    mazeColor = color;
+    this->mazeColor = color;
 }
