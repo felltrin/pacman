@@ -94,17 +94,17 @@ void Player::Update()
     this->setCenterXPos(x + 23.0f);
     this->setCenterYPos(y + 24.0f);
 
-    if (counter < 19)
+    if (this->counter < 19)
     {
-        counter++;
-        if (counter > 3)
+        this->counter++;
+        if (this->counter > 3)
         {
             Game::instance().setFlicker(!Game::instance().getFlicker());
         }
     }
     else
     {
-        counter = 0;
+        this->counter = 0;
         Game::instance().setFlicker(new bool(true));
     }
 
@@ -370,9 +370,7 @@ void Player::setTurnsAllowed(bool turns[4])
     for (int i = 0; i < 4; i++)
     {
         this->turnsAllowed[i] = turns[i];
-        std::cout << this->turnsAllowed[i] << " ";
     }
-    std::cout << std::endl;
 }
 
 Vector2 Player::movePlayer(float playX, float playY)
