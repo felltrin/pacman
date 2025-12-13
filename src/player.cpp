@@ -350,7 +350,7 @@ void Player::checkPosition(int level[33][30])
                 {
                     turns[0] = true;
                 }
-                else if (row != 15 && column != -1)
+                else if (row != 15 || column != -1)
                 {
                     turns[0] = false;
                 }
