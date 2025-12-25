@@ -16,15 +16,15 @@ int main(int, char **)
     Color color = WHITE;
 
     Maze maze = Maze();
+    maze.Print();
     maze.setMazeColor(RED);
     Player player = Player();
     SetTargetFPS(60);
 
     while (!WindowShouldClose())
     {
-        player.checkPosition(maze.maze);
+        player.checkPosition();
         player.Update();
-        player.checkCollisions(maze.maze);
 
         std::stringstream ss;
         ss << "Score: " << Game::instance().getScore();
