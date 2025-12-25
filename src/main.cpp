@@ -16,7 +16,6 @@ int main(int, char **)
     Color color = WHITE;
 
     Maze maze = Maze();
-    maze.Print();
     maze.setMazeColor(RED);
     Player player = Player();
     SetTargetFPS(60);

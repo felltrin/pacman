@@ -427,8 +427,6 @@ int Player::checkCollisions()
         }
         if (this->level[row][col] == 2)
         {
-            std::cout << this->centerX << ", " << this->centerY << std::endl;
-            std::cout << this->xPos << ", " << this->yPos << std::endl;
             Game::instance().setMaze(row, col, 0);
             curScore += 50;
         }
