@@ -9,3 +9,4 @@ CMakeSettings.json
 /build-vs2022-release/
 /docs/
 /build-vs2022-debug/
+/.vscode/
