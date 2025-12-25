@@ -91,6 +91,9 @@ void Player::Update()
 {
     float x = this->getXPos();
     float y = this->getYPos();
+    int curScore = Player::checkCollisions();
+    Game::instance().setScore(curScore);
+
     this->setCenterXPos(x + 23.0f);
     this->setCenterYPos(y + 24.0f);
 
@@ -192,8 +195,10 @@ float Player::getCenterYPos()
     return this->centerY;
 };
 
-void Player::checkPosition(int level[33][30])
+// void Player::checkPosition(int level[33][30])
+void Player::checkPosition()
 {
+    this->getMazeState();
     static bool turns[4] = {false, false, false, false};
 
     float numberOne = std::floor((UI::SCREEN_HEIGHT - 50) / 32);
@@ -206,7 +211,7 @@ void Player::checkPosition(int level[33][30])
         {
             int row = std::floor(this->getCenterYPos() / numberOne);
             int column = std::floor((this->getCenterXPos() - numberThree) / numberTwo);
-            if (level[row][column] < 3)
+            if (this->level[row][column] < 3)
             {
                 turns[1] = true;
             }
@@ -219,7 +224,7 @@ void Player::checkPosition(int level[33][30])
         {
             int row = std::floor(this->getCenterYPos() / numberOne);
             int column = std::floor((this->getCenterXPos() + numberThree) / numberTwo);
-            if (level[row][column] < 3)
+            if (this->level[row][column] < 3)
             {
                 turns[0] = true;
             }
@@ -232,7 +237,7 @@ void Player::checkPosition(int level[33][30])
         {
             int row = std::floor((this->getCenterYPos() + numberThree) / numberOne);
             int column = std::floor(this->getCenterXPos() / numberTwo);
-            if (level[row][column] < 3)
+            if (this->level[row][column] < 3)
             {
                 turns[3] = true;
             }
@@ -245,7 +250,7 @@ void Player::checkPosition(int level[33][30])
         {
             int row = std::floor((this->getCenterYPos() - numberThree) / numberOne);
             int column = std::floor(this->getCenterXPos() / numberTwo);
-            if (level[row][column] < 3)
+            if (this->level[row][column] < 3)
             {
                 turns[2] = true;
             }
@@ -262,7 +267,7 @@ void Player::checkPosition(int level[33][30])
             {
                 row = std::floor((this->centerY + numberThree + 3) / numberOne);
                 column = std::floor(this->centerX / numberTwo);
-                if (level[row][column] < 3)
+                if (this->level[row][column] < 3)
                 {
                     turns[3] = true;
                 }
@@ -272,7 +277,7 @@ void Player::checkPosition(int level[33][30])
                 }
                 row = std::floor((this->centerY - numberThree - 3) / numberOne);
                 column = std::floor(this->centerX / numberTwo);
-                if (level[row][column] < 3)
+                if (this->level[row][column] < 3)
                 {
                     turns[2] = true;
                 }
@@ -285,7 +290,7 @@ void Player::checkPosition(int level[33][30])
             {
                 row = std::floor(this->centerY / numberOne);
                 column = std::floor((this->centerX - numberTwo) / numberTwo);
-                if (level[row][column] < 3)
+                if (this->level[row][column] < 3)
                 {
                     turns[1] = true;
                 }
@@ -295,7 +300,7 @@ void Player::checkPosition(int level[33][30])
                 }
                 row = std::floor(this->centerY / numberOne);
                 column = std::floor((this->centerX + numberTwo) / numberTwo);
-                if (level[row][column] < 3)
+                if (this->level[row][column] < 3)
                 {
                     turns[0] = true;
                 }
@@ -313,7 +318,7 @@ void Player::checkPosition(int level[33][30])
             {
                 row = std::floor((this->centerY + numberOne) / numberOne);
                 column = std::floor(this->centerX / numberTwo);
-                if (level[row][column] < 3)
+                if (this->level[row][column] < 3)
                 {
                     turns[3] = true;
                 }
@@ -323,7 +328,7 @@ void Player::checkPosition(int level[33][30])
                 }
                 row = std::floor((this->centerY - numberOne) / numberOne);
                 column = std::floor(this->centerX / numberTwo);
-                if (level[row][column] < 3)
+                if (this->level[row][column] < 3)
                 {
                     turns[2] = true;
                 }
@@ -336,7 +341,7 @@ void Player::checkPosition(int level[33][30])
             {
                 row = std::floor(this->centerY / numberOne);
                 column = std::floor((this->centerX - numberThree) / numberTwo);
-                if (level[row][column] < 3)
+                if (this->level[row][column] < 3)
                 {
                     turns[1] = true;
                 }
@@ -346,7 +351,7 @@ void Player::checkPosition(int level[33][30])
                 }
                 row = std::floor(this->centerY / numberOne);
                 column = std::floor((this->centerX + numberThree) / numberTwo);
-                if (level[row][column] < 3)
+                if (this->level[row][column] < 3)
                 {
                     turns[0] = true;
                 }
@@ -404,27 +409,39 @@ void Player::setPlayerDirection(int d)
     this->direction = d;
 }
 
-void Player::checkCollisions(int level[33][30])
+int Player::checkCollisions()
 {
     // put this into the constants file after implementing the function
     float numberOne = std::floor((UI::SCREEN_HEIGHT - 50) / 32);
     float numberTwo = std::floor(UI::SCREEN_WIDTH / 30);
     int row, col;
+    int curScore = Game::instance().getScore();
     if ((0.0f < this->getXPos()) && (this->getXPos() < 870.0f))
     {
         row = std::floor(this->centerY / numberOne);
         col = std::floor(this->centerX / numberTwo);
-        if (level[row][col] == 1)
+        if (this->level[row][col] == 1)
         {
-            level[row][col] = 0;
-            int curScore = Game::instance().getScore();
-            Game::instance().setScore(curScore += 10);
+            Game::instance().setMaze(row, col, 0);
+            curScore += 10;
         }
-        if (level[row][col] == 2)
+        if (this->level[row][col] == 2)
         {
-            level[row][col] = 0;
-            int curScore = Game::instance().getScore();
-            Game::instance().setScore(curScore += 50);
+            Game::instance().setMaze(row, col, 0);
+            curScore += 50;
         }
+    }
+
+    return curScore;
+}
+
+void Player::getMazeState()
+{
+    std::vector<int> v = Game::instance().getMaze();
+    for (int i = 0; i < v.size(); i++)
+    {
+        int row = i / 30;
+        int col = i % 30;
+        this->level[row][col] = v[i];
     }
 }

@@ -51,9 +51,11 @@ class Maze
      * @brief A setter function to set the current color of the maze.
      */
     void setMazeColor(Color color);
+    void getMazeState();
 
   private:
     int numRows;     /**< Rows number used for initialized the maze grid and drawing said grid */
     int numCols;     /**< Columns number used for initialized the maze grid and drawing said grid */
     Color mazeColor; /**< The color that the grid is drawn in */
+    int board[33][30];
 };

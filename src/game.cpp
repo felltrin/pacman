@@ -31,3 +31,23 @@ void Game::setScore(int score)
 {
     this->score_ = score;
 }
+
+void Game::setMaze(int row, int col, int val)
+{
+    maze_[row][col] = val;
+}
+
+std::vector<int> Game::getMaze()
+{
+    std::vector<int> res;
+
+    for (int i = 0; i < 33; i++)
+    {
+        for (int j = 0; j < 30; j++)
+        {
+            res.push_back(maze_[i][j]);
+        }
+    }
+
+    return res;
+}

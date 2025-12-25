@@ -22,9 +22,8 @@ int main(int, char **)
 
     while (!WindowShouldClose())
     {
-        player.checkPosition(maze.maze);
+        player.checkPosition();
         player.Update();
-        player.checkCollisions(maze.maze);
 
         std::stringstream ss;
         ss << "Score: " << Game::instance().getScore();

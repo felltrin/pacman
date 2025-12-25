@@ -1,4 +1,6 @@
 #pragma once
+#include <iostream>
+#include <vector>
 
 /**
  * @class Game
@@ -31,10 +33,13 @@ class Game
      * @brief Sets the score of the game
      */
     void setScore(int score);
+    void setMaze(int row, int col, int val);
+    std::vector<int> getMaze();
 
   private:
     Game();                /**< Private constructor to ensure that there is only one instance of the class. */
     static Game instance_; /**< Instance varible to access methods and fields */
     bool *flicker_;        /**< This is in charge of holding the value of whether to flicker the energizer or not */
     int score_;            /**< Game score */
+    int maze_[33][30];
 };

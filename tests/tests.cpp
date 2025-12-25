@@ -50,7 +50,7 @@ TEST_CASE("The checkPosition function is working as intended", "[Player]")
     p.setCenterXPos(13.0f);
     p.setCenterYPos(437.0f);
     p.setPlayerDirection(1);
-    p.checkPosition(m.maze);
+    p.checkPosition();
     REQUIRE(p.turnsAllowed[0] == true);
     REQUIRE(p.turnsAllowed[3] == false);
 }
@@ -63,7 +63,8 @@ TEST_CASE("The checkCollisions function works as intended", "[Player]")
     p.setYPos(663.0f);
     p.setCenterXPos(811.0f);
     p.setCenterYPos(687.0f);
-    p.checkCollisions(m.maze);
-    REQUIRE(Game::instance().getScore() == 50);
-    REQUIRE(Game::instance().getScore() != 10);
+    p.checkPosition();
+    int curScore = p.checkCollisions();
+    REQUIRE(curScore == 50);
+    REQUIRE(curScore != 10);
 }

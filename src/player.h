@@ -77,7 +77,7 @@ class Player
      * @brief Checks the current player position to their surroundings to figure out which directions the player can
      * turn
      */
-    void checkPosition(int level[33][30]);
+    void checkPosition();
     /**
      * @brief Moves the player by player speed in the direction they want to go and are able to
      */
@@ -93,7 +93,10 @@ class Player
     /**
      * @brief Checks if the current player has interacted with the pacdots
      */
-    void checkCollisions(int level[33][30]);
+    // void checkCollisions(int level[33][30]);
+    // int checkCollisions(int level[33][30]);
+    int checkCollisions();
+    void getMazeState();
 
   private:
     Texture2D playerTextures[4]; /**< All the player textures for each direction the player is facing */
@@ -105,4 +108,5 @@ class Player
     int directionCommand;        /**< This handles joystick-like player input with delaying the turns */
     int playerSpeed;             /**< The speed to which the player travels in */
     int counter;                 /**< Field that updates for the player to be animated. */
+    int level[33][30];
 };

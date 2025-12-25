@@ -14,7 +14,7 @@ Maze::Maze()
 
 void Maze::Initialize()
 {
-    int board[33][30] = {{6, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5},
+    int level[33][30] = {{6, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5},
                          {3, 6, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 6, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 3},
                          {3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3},
                          {3, 3, 1, 6, 4, 4, 5, 1, 6, 4, 4, 4, 5, 1, 3, 3, 1, 6, 4, 4, 4, 5, 1, 6, 4, 4, 5, 1, 3, 3},
@@ -51,13 +51,31 @@ void Maze::Initialize()
     {
         for (int j = 0; j < this->numCols; j++)
         {
-            this->maze[i][j] = board[i][j];
+            this->maze[i][j] = level[i][j];
+            Game::instance().setMaze(i, j, level[i][j]);
         }
+    }
+
+    std::vector<int> v = Game::instance().getMaze();
+    for (int i = 0; i < v.size(); i++)
+    {
+        int row = i / 30;
+        int col = i % 30;
+        this->board[row][col] = v[i];
     }
 }
 
 void Maze::Print()
 {
+    for (int i = 0; i < this->numRows; i++)
+    {
+        for (int j = 0; j < this->numCols; j++)
+        {
+            std::cout << this->board[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
     for (int i = 0; i < this->numRows; i++)
     {
         for (int j = 0; j < this->numCols; j++)
@@ -70,6 +88,7 @@ void Maze::Print()
 
 void Maze::Draw()
 {
+    Maze::getMazeState();
     int numberOne = std::floor((UI::SCREEN_HEIGHT - 50) / 32);
     int numberTwo = std::floor(UI::SCREEN_WIDTH / 30);
 
@@ -223,4 +242,15 @@ Color Maze::getMazeColor()
 void Maze::setMazeColor(Color color)
 {
     this->mazeColor = color;
+}
+
+void Maze::getMazeState()
+{
+    std::vector<int> v = Game::instance().getMaze();
+    for (int i = 0; i < v.size(); i++)
+    {
+        int row = i / 30;
+        int col = i % 30;
+        this->maze[row][col] = v[i];
+    }
 }
